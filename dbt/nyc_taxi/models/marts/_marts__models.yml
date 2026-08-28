@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: dim_zones
+    columns:
+      - name: location_id
+        tests:
+          - unique
+          - not_null
+  
+  - name: fct_trips
+    columns:
+      - name: trip_id
+        tests:
+          - unique
+          - not_null
+      - name: pickup_location_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_zones')
+                field: location_id
+      - name: dropoff_location_id
+        tests:
+          - relationships:
+              arguments:
+                to: ref('dim_zones')
+                field: location_id
+
+  - name: mart_daily_zone_summary
+    columns:
+      - name: trip_count
+        tests:
+          - not_null

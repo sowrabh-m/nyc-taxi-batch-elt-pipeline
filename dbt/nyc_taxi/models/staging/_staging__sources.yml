@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: raw_nyc_taxi
+    database: DE_PORTFOLIO_01
+    schema: raw
+    tables:
+      - name: raw_trips
+        identifier: RAW_TRIPS
+      - name: raw_zones
+        identifier: RAW_ZONES
+        
